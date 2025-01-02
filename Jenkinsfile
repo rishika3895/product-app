@@ -28,7 +28,7 @@ pipeline {
                 echo 'Running Backend Tests...'
                 dir('backend') { // Ensure the working directory is correct
                     sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
-                    sh 'npm test --prefix backend'
+                    sh 'npm test'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage('Run Frontend Tests') {
             steps {
                 echo 'Running Frontend Tests...'
-                sh 'npm test --prefix frontend'
+                sh 'npm test'
             }
         }
 
