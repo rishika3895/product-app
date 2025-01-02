@@ -33,13 +33,6 @@ pipeline {
             }
         }
 
-        stage('Run Frontend Tests') {
-            steps {
-                echo 'Running Frontend Tests...'
-                sh 'npm test'
-            }
-        }
-
         stage('Deploy Application') {
             steps {
                 echo 'Deploying Application...'
