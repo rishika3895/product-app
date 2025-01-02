@@ -17,17 +17,19 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 echo 'Building Docker Images...'
-                dir('backend'){
-                sh 'docker-compose build'
+                dir('backend') { // Ensure the working directory is correct
+                    sh "docker-compose -f $DOCKER_COMPOSE_FILE build"
+                }
             }
-        }
         }
 
         stage('Run Backend Tests') {
             steps {
                 echo 'Running Backend Tests...'
-                sh 'docker-compose up -d'
-                sh 'npm test --prefix backend'
+                dir('backend') { // Ensure the working directory is correct
+                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
+                    sh 'npm test --prefix backend'
+                }
             }
         }
 
@@ -41,7 +43,9 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 echo 'Deploying Application...'
-                sh 'docker-compose up -d'
+                dir('backend') { // Ensure the working directory is correct
+                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
+                }
             }
         }
     }
@@ -49,7 +53,9 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-            sh 'docker-compose down'
+            dir('backend') { // Ensure the working directory is correct
+                sh "docker-compose -f $DOCKER_COMPOSE_FILE down"
+            }
         }
         success {
             echo 'Pipeline completed successfully!'
