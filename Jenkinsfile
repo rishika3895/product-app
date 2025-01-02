@@ -16,8 +16,10 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 echo 'Building Docker Images...'
+                dir('backend'){
                 sh 'docker-compose build'
             }
+        }
         }
 
         stage('Run Backend Tests') {
