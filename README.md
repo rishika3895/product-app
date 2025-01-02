@@ -1,6 +1,6 @@
 # Dockerized Product Management App
 <p align="center">
-  <img src ="">
+  <img src ="https://github.com/rishika3895/product-app/blob/main/CRUD.png">
 </p>
 
 ## 🚀 Project Overview
