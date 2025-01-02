@@ -1,4 +1,7 @@
 # Dockerized Product Management App
+<p align="center">
+  <img src ="">
+</p>
 
 ## 🚀 Project Overview
 
