@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DOCKER_COMPOSE_FILE = "backend/docker-compose.yml"
+        PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin"
     }
 
     stages {
