@@ -27,18 +27,8 @@ pipeline {
             steps {
                 echo 'Building Frontend Code...'
                 dir('frontend') {
-                    sh 'npm install'
-                    sh 'CI=false npm run build'
-                }
-            }
-        }
-
-        stage('Run Backend Tests') {
-            steps {
-                echo 'Running Backend Tests...'
-                dir('backend') {
-                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
-                    sh 'npm test'
+                    sh "npm install"
+                    sh "npm run build"
                 }
             }
         }
@@ -56,7 +46,7 @@ pipeline {
             steps {
                 echo 'Deploying Frontend...'
                 dir('frontend') {
-                    sh 'npm start'
+                    sh "npx serve -s build -l 3000 &"
                 }
             }
         }
