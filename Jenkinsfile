@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        BACKEND_COMPOSE_FILE = "backend/docker-compose.yml"
+        BACKEND_COMPOSE_FILE = "docker-compose.yml"
         FRONTEND_DIR = "frontend"
         PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin"
     }
